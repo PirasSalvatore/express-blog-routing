@@ -14,4 +14,4 @@ app.get('/', (req, res) => {
 })
 
 //uso le rout importate
-app.use("/api/v1/posts".postsRouter)
+app.use("/api/v1/posts", postsRouter)
