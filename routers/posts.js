@@ -1,16 +1,18 @@
 const express = require("express")
+const posts = require("../files/posts")
 const router = express.Router()
 
+router.use(express.static("files"))
 
 //index (read)
 router.get("/", (req, res) => {
-    res.send("return your posts list")
+    res.json(posts)
 })
 
 //show (read)
-router.get("/:id", (req, res) => {
-    const postId = req.params.id
-    res.send(`return yoru post have id : ${postId}`);
+router.get("/:Slug", (req, res) => {
+    const postSlug = req.params.Slug
+    res.json(posts.find((post) => post.slug === postSlug));
 })
 
 //store (create)
@@ -19,21 +21,21 @@ router.post("/", (req, res) => {
 })
 
 //update (update)
-router.put("/:id", (req, res) => {
-    const postId = req.params.id
-    res.send(`update your post have id : ${postId}`);
+router.put("/:Slug", (req, res) => {
+    const postSlug = req.params.Slug
+    res.send(`update your post have Slug : ${postSlug}`);
 })
 
 //partial update (update)
-router.patch("/:id", (req, res) => {
-    const postId = req.params.id
-    res.send(`modify your post have id : ${postId}`);
+router.patch("/:Slug", (req, res) => {
+    const postSlug = req.params.Slug
+    res.send(`modify your post have Slug : ${postSlug}`);
 })
 
 //delete (delete)
-router.delete("/:id", (req, res) => {
-    const postId = req.params.id
-    res.send(`delete your post have id : ${postId}`);
+router.delete("/:Slug", (req, res) => {
+    const postSlug = req.params.Slug
+    res.send(`delete your post have Slug : ${postSlug}`);
 })
 
 module.exports = router

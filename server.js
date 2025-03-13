@@ -5,6 +5,9 @@ const port = 3000
 //import rout
 const postsRouter = require("./routers/posts")
 
+// import static assets
+app.use(express.static("public"))
+
 app.listen(port, () => {
     console.log(`the blog server is run to port http://localhost:${port}`);
 })
